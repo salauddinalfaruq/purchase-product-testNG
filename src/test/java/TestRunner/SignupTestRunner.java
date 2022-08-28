@@ -4,6 +4,7 @@ import Base.SetUp;
 import Pages.LoginPage;
 import Pages.SignupPage;
 import Utils.Utils;
+import io.qameta.allure.Allure;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.Test;
 
@@ -11,7 +12,7 @@ import java.io.IOException;
 
 public class SignupTestRunner extends SetUp {
 
-    @Test
+    @Test(description = "User can SignUp")
     public void doSignup() throws InterruptedException, IOException, ParseException {
         driver.get("http://automationpractice.com/");
         LoginPage loginPage = new LoginPage(driver);
@@ -24,5 +25,7 @@ public class SignupTestRunner extends SetUp {
         String mobile = "175" + utils.generateRandomNumber(1000000, 9999999);
         signupPage.doRegistration(email, password, mobile);
         utils.writeUserInfo(email, password);
+        loginPage.linkLogout.click();
+        Allure.description("User Signup successfully");
     }
 }

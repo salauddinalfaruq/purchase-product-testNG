@@ -55,15 +55,15 @@ public class OrderTestRunner extends SetUp {
     @Test(priority = 5 , description = "User can see product summary")
     public void productSummary(){
         orderPage = new OrderPage(driver);
-        String txtProductSummary = orderPage.checkProductSummary();
+        String txtProductSummary = orderPage.clickOnCheckout();
         Assert.assertTrue(txtProductSummary.contains("SHOPPING-CART SUMMARY"));
         Allure.description("User can view product summary before checkout");
     }
 
     @Test(priority = 6 , description = "User see product summary")
-    public void shoppingCart() throws InterruptedException {
+    public void addressPage() throws InterruptedException {
         orderPage = new OrderPage(driver);
-        String txtAddress = orderPage.shoppingCartSummary();
+        String txtAddress = orderPage.clickOnCheckout1();
         Assert.assertTrue(txtAddress.contains("ADDRESSES"));
         Allure.description("User can view summary before checkout");
     }
@@ -73,5 +73,38 @@ public class OrderTestRunner extends SetUp {
         orderPage = new OrderPage(driver);
         String txtShipping = orderPage.submitBtnClick();
         Assert.assertTrue(txtShipping.contains("SHIPPING"));
+        Allure.description("Click on submit button successfully");
+    }
+
+    @Test(priority = 8 , description = "User should click on checkbox")
+    public void checkBoxClick(){
+        orderPage = new OrderPage(driver);
+        orderPage.clickOnCheckBox();
+        Allure.description("User click on checkbox successfully");
+    }
+
+    @Test(priority = 9 , description = "User click on submit button and go to payment method")
+    public void submitClick1(){
+        orderPage = new OrderPage(driver);
+        String txtPaymentMethod = orderPage.submitBtnClick1();
+        Assert.assertTrue(txtPaymentMethod.contains("PLEASE CHOOSE YOUR PAYMENT METHOD"));
+        Allure.description("User click on submit button successfully and go to payment method page");
+    }
+
+    @Test(priority = 10 , description = "User can see payment option and choose payment method")
+    public void payOption(){
+        orderPage = new OrderPage(driver);
+        String txtOrderSummary = orderPage.paymentOption();
+        Assert.assertTrue(txtOrderSummary.contains("ORDER SUMMARY"));
+        Allure.description("User choose payment method successfully");
+    }
+
+    @Test(priority = 11 , description = "User click on confirm button")
+    public void orderConfirmation(){
+        orderPage = new OrderPage(driver);
+        String txtOrderConfirm = orderPage.clickConfirmBtn();
+        System.out.println("\n" +txtOrderConfirm);
+        Assert.assertTrue(txtOrderConfirm.contains("Your order on My Store is complete."));
+        Allure.description("User click on confirm button successfully and see the confirmation message");
     }
 }

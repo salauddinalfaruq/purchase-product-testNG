@@ -22,7 +22,7 @@ public class OrderPage {
     WebElement btnCheckOut;
     @FindBy(id = "cart_title")
     WebElement lblCartSummaryTitle;
-    @FindBy(css = "[title =  'Proceed to checkout']")
+    @FindBy(xpath = "//body/div[@id='page']/div[2]/div[1]/div[3]/div[1]/p[2]/a[1]")
     WebElement btnCheckOut1;
     @FindBy(xpath = "//h1[contains(text(),'Addresses')]")
     WebElement lblAddress;
@@ -32,6 +32,18 @@ public class OrderPage {
     WebElement lblShipping;
     @FindBy(id = "cgv")
     WebElement checkbox;
+    @FindBy(name = "processCarrier")
+    WebElement btnSubmit1;
+    @FindBy(xpath = "//h1[contains(text(),'Please choose your payment method')]")
+    WebElement lblPaymentMethod;
+    @FindBy(xpath = "//body/div[@id='page']/div[2]/div[1]/div[3]/div[1]/div[1]/div[3]/div[1]/div[1]")
+    WebElement btnPaymentOption;
+    @FindBy(className = "page-heading")
+    WebElement lblOrderSummary;
+    @FindBy(css = "[type = 'submit']")
+    List<WebElement> btnConfirmOrder;
+    @FindBy(className = "dark")
+    List<WebElement> lblOrderComplete;
     WebDriver driver;
     public OrderPage(WebDriver driver){
         this.driver =driver;
@@ -55,12 +67,12 @@ public class OrderPage {
         return btnCheckOut.isDisplayed();
     }
 
-    public String checkProductSummary(){
+    public String clickOnCheckout(){
         btnCheckOut.click();
         return lblCartSummaryTitle.getText();
     }
 
-    public String shoppingCartSummary() throws InterruptedException {
+    public String clickOnCheckout1() throws InterruptedException {
         btnCheckOut1.click();
         Thread.sleep(2000);
         return lblAddress.getText();
@@ -69,5 +81,24 @@ public class OrderPage {
     public String submitBtnClick(){
         btnSubmit.get(1).click();
         return lblShipping.getText();
+    }
+
+    public void clickOnCheckBox(){
+        checkbox.click();
+    }
+
+    public String submitBtnClick1(){
+        btnSubmit1.click();
+        return lblPaymentMethod.getText();
+    }
+
+    public String paymentOption(){
+        btnPaymentOption.click();
+        return lblOrderSummary.getText();
+    }
+
+    public String clickConfirmBtn(){
+        btnConfirmOrder.get(1).click();
+        return lblOrderComplete.get(5).getText();
     }
 }
