@@ -44,6 +44,8 @@ public class OrderPage {
     List<WebElement> btnConfirmOrder;
     @FindBy(className = "dark")
     List<WebElement> lblOrderComplete;
+
+
     WebDriver driver;
     public OrderPage(WebDriver driver){
         this.driver =driver;
