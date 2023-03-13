@@ -29,8 +29,9 @@ and also select and purchase product from the website.
 - Give gradle clean test command in root directory
 - For generating allure report write the command below
 
-   allure generate allure-results --clean -o allure-report
-   allure serve allure-results    
+  `allure generate allure-results --clean -o allure-report`
+  
+  `allure serve allure-results`  
 
 ### Report
 Overview
