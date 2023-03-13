@@ -26,14 +26,16 @@ and also select and purchase product from the website.
 
 #### Steps to run
 - Clone the repo
-- Give gradle clean test command in root directory
+- Give gradle clean test command in root directory  
+
+### Report
+
 - For generating allure report write the command below
 
   `allure generate allure-results --clean -o allure-report`
   
-  `allure serve allure-results`  
-
-### Report
+  `allure serve allure-results`
+  
 Overview
 ![overview](https://user-images.githubusercontent.com/108132871/187086624-9ca1278e-e94a-430d-9195-cea1cced2373.PNG)
 
